@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Connect Four</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/connectfour.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="../js/connectfour.js" defer></script>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="how-to-play-container">
+        <h1>connect four</h1>
+        <img src="/img/succulent1.png" height="95" width="95" alt="succulent-1">
+        <br>
+        <h3>how to play</h3>
+        <br>
+        <br>
+        <p>Take turns dropping checkers into the grid 
+            <br>
+            by clicking on the row of your choice.
+            <br>
+            <br>
+            To win Connect Four, you must be the first player
+            <br>
+            to get four of your colored checkers in a row
+            <br>
+            horizontally, vertically, or diagonally.
+        </p>
+            <br>
+        <button class="start-button">start</button>
+    </div>
+    <div class="enter-player-one-name">
+        <h1>connect four</h1>
+        <br>
+        <br>
+        <img src="/img/succulent3.png" height="95" width="95" alt="succulent-3">
+        <br>
+        <h4>PLAYER 1</h4>
+        <br>
+        <input class="player-one-input" placeholder="enter name" type="text">
+        <button class="enter-player-one">enter</button>
+    </div>
+    <div class="enter-player-two-name">
+        <h1>connect four</h1>
+                            <br>
+                            <br>
+        <img src="/img/succulent2.png" height="95" width="95" alt="succulent-2">
+                            <br>
+        <h4>PLAYER 2</h4>
+                            <br>
+        <input class="player-two-input" placeholder="enter name" type="text">
+        <button class="enter-player-two">enter</button>
+    </div>
+    <div id="connect-four-container">
+        <h1 id="connect-four-title">connect four</h1>
+        <div id="succulent-3">
+            <img src="/img/succulent3.png" height="95" width="95" alt="succulent-3">
+            <h4 class='player-one-name'>
+                PLAYER 1
+            </h4>
+        </div>
+        <div id="succulent-2">
+            <img src="/img/succulent2.png" height="95" width="95" alt="succulent-2">
+            <h4 class='player-two-name'>
+                PLAYER 2
+            </h4>
+        </div>
+        <div id="connect-four-game-board">
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <div class="board-column">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
