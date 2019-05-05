@@ -1,19 +1,45 @@
-$('.start-button').click( () =>
+const CLICK_start_to_continue =
+ $('.start-button').click( () =>
     $('.how-to-play-container').css("display", 'none')
     &&
     $(".enter-player-one-name").css('display', 'inline-flex')
 )
-$('.enter-player-one').click( () => {
+const CLICK_enter_to_continue_for_player_one =
+ $('.enter-player-one').click( () => {
     $('.enter-player-one-name').css("display", 'none')
     &&
     $('.enter-player-two-name').css('display', 'inline-flex')
 })
-$('.enter-player-two').click( () => {
+const CLICK_enter_to_continue_for_player_two =
+ $('.enter-player-two').click( () => {
     $('.enter-player-two-name').css("display", 'none')
     &&
     $('#connect-four-container').css('display', 'inline-flex')
 })
-const playerArray = []
+const KEYPRESS_enter_to_continue_for_player_one =
+ $('.player-one-input').on('keypress', (event => {
+    const key = event.which
+    if(key == 13) {
+        $('.enter-player-one').click()
+    }
+}))
+const KEYPRESS_enter_to_continue_for_player_two =
+ $('.player-two-input').on('keypress', (event => {
+    const key = event.which
+    if(key == 13) {
+        $('.enter-player-two').click()
+    }
+}))
+const DISPLAY_player_one_name = 
+ $('.player-one-input').keyup( () => {
+    const name = $('.player-one-input').val()
+    $('.player-one-name').text(name)
+})
+const DISPLAY_player_two_name = 
+$('.player-two-input').keyup( () => {
+    const name = $('.player-two-input').val()
+    $('.player-two-name').text(name)
+})
 const game = {
     currentPlayer:{},
     players:[
@@ -21,35 +47,17 @@ const game = {
         {player:"two", color: "rgb(193, 219, 220)"}
     ]
 }
-const displayPlayerOneName = $('.player-one-input').keyup( () => {
-    const name = $('.player-one-input').val()
-    $('.player-one-name').text(name)
-})
-const pressEnterToContinueForPlayerOne = $('.player-one-input').on('keypress', (event => {
-    let key = event.which
-    if(key == 13) {
-        $('.enter-player-one').click()
-    }
-}))
-const displayPlayerTwoName = $('.player-two-input').keyup( () => {
-    const name = $('.player-two-input').val()
-    $('.player-two-name').text(name)
-})
-const pressEnterToContinueForPlayerTwo = $('.player-two-input').on('keypress', (event => {
-    let key = event.which
-    if(key == 13) {
-        $('.enter-player-two').click()
-    }
-}))
-const checkWinner = () => {
+const   playerArray = []
+const      $columns = $(`.board-column`)
+const     setPlayer = () => game.currentPlayer = game.players[0]
+                        $('.border-one').css("border", "solid 10px #bbc687")
+const   checkWinner = () => {
     $('.winner-declaration').css('display', 'inline')
     $('#connect-four-game-board').css('pointer-events', 'none')
 }
-const         $slot = $(".slot")
-const      $columns = $(`.board-column`)
-const     playerOne = game.players[0]
-const     playerTwo = game.players[1]
 const switchPlayers = () =>{
+    const playerOne = game.players[0]
+    const playerTwo = game.players[1]
     if (game.currentPlayer === playerOne) {
         game.currentPlayer = playerTwo,
         $('.border-two').css("border", "")
@@ -60,8 +68,6 @@ const switchPlayers = () =>{
         $('.border-two').css("border", "solid 10px #c1dbdc")
     }
 }
-const     setPlayer = () => game.currentPlayer = game.players[0]
-                        $('.border-one').css("border", "solid 10px #bbc687")
 const checkVertical = (arrayOfColumn) => { 
     for (let i = 0; i < 3; i++) {
         if ((arrayOfColumn[i]).style.backgroundColor === game.currentPlayer.color &&
