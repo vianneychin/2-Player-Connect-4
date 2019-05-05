@@ -34,9 +34,6 @@ const game = {
 }
 const playerOne = game.players[0]
 const playerTwo = game.players[1]
-const setPlayer = () => {
-    game.currentPlayer = game.players[0]
-}
 const switchPlayers = () =>{
     if (game.currentPlayer === playerOne) {
         game.currentPlayer = playerTwo
@@ -60,4 +57,7 @@ $(`.board-column`).click((e => {
         }
     }
 ))
+setPlayer = () => {
+    game.currentPlayer = game.players[0]
+}
 setPlayer()
