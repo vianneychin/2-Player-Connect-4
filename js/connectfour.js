@@ -22,33 +22,44 @@ $('.player-two-input').keyup( () => {
     const name = $('.player-two-input').val()
     $('.player-two-name').text( name )
 })
-
-
-
 const game = {
     currentPlayer:{},
     players:[
-        {player:"yellow", color: "#bbc687"},
-        {player:"blue", color: "#c1dbdc"}
+        {player:"Yellow", color: "rgb(187, 198, 135)"},
+        {player:"Blue", color: "rgb(193, 219, 220)"}
     ]
 }
-const playerOne = game.players[0]
-const playerTwo = game.players[1]
+const $slot = $(".slot")
+const $columns = $(`.board-column`)
+const yellowToken = game.players[0]
+const blueToken = game.players[1]
+const setPlayer = () => {
+    game.currentPlayer = game.players[0]
+}
 const switchPlayers = () =>{
-    if (game.currentPlayer === playerOne) {
-        game.currentPlayer = playerTwo
-    } else if (game.currentPlayer === playerTwo) {
-        game.currentPlayer = playerOne
+    if (game.currentPlayer === yellowToken) {
+        game.currentPlayer = blueToken
+    } else if (game.currentPlayer === blueToken) {
+        game.currentPlayer = yellowToken
     }
 }
-
-$(`.board-column`).click((e => {
+const checkVertical = (arrayOfColumn) => { 
+    for (let i = 0; i < 3; i++) {
+        if ((arrayOfColumn[i]).style.backgroundColor === game.currentPlayer.color &&
+            (arrayOfColumn[i + 1]).style.backgroundColor === game.currentPlayer.color &&
+            (arrayOfColumn[i + 2]).style.backgroundColor === game.currentPlayer.color &&
+            (arrayOfColumn[i + 3]).style.backgroundColor === game.currentPlayer.color) {
+                alert(`${game.currentPlayer.color} wins`)
+        }
+    }
+}
+$columns.click((e => {
     let $column = $(e.currentTarget).children()
     for (let i = $(e.currentTarget).children().length - 1; i >= 0; i--) {
             if ($(e.currentTarget).children()[i].style.backgroundColor === "") {
                 $(e.currentTarget).children()[i].style.backgroundColor = game.currentPlayer.color
 
-                // checkVertical($column)
+                checkVertical($column)
                 // checkHorizontal($columns, i)
                 // checkDiagonal()
                 switchPlayers()
@@ -57,7 +68,4 @@ $(`.board-column`).click((e => {
         }
     }
 ))
-setPlayer = () => {
-    game.currentPlayer = game.players[0]
-}
 setPlayer()
