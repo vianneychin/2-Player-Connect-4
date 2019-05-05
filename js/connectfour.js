@@ -29,17 +29,21 @@ const game = {
         {player:"two", color: "rgb(193, 219, 220)"}
     ]
 }
-const $slot = $(".slot")
-const $columns = $(`.board-column`)
+const setPlayer = () => game.currentPlayer = game.players[0]
+      setPlayer()
+const     $slot = $(".slot")
+const  $columns = $(`.board-column`)
 const playerOne = game.players[0]
 const playerTwo = game.players[1]
-setPlayer = () => game.currentPlayer = game.players[0]
-setPlayer()
 const switchPlayers = () =>{
     if (game.currentPlayer === playerOne) {
-        game.currentPlayer = playerTwo
+        game.currentPlayer = playerTwo,
+        $('.border-two').css("border", "")
+        $('.border-one').css("border", "solid 10px #bbc687")
     } else if (game.currentPlayer === playerTwo) {
         game.currentPlayer = playerOne
+        $('.border-one').css("border", "")
+        $('.border-two').css("border", "solid 10px #c1dbdc")
     }
 }
 const checkVertical = (arrayOfColumn) => { 
@@ -67,3 +71,4 @@ $columns.click((e => {
         }
     }
 ))
+

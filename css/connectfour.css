@@ -126,19 +126,31 @@ input {
 #connect-four-container {
     /* display: none; */
 }
-#connect-four-title {
+.connect-four-title {
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-#succulent-3 {
+.succulent-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 174px;
+    width: 240px;
     position: absolute;
     top: 50%;
     left: 15%;
     transform: translate(-50%, -50%);
 }
-#succulent-2 {
+.succulent-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 174px;
+    width: 240px;
     position: absolute;
     top: 50%;
     left: 85%;
