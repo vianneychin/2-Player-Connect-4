@@ -25,22 +25,21 @@ $('.player-two-input').keyup( () => {
 const game = {
     currentPlayer:{},
     players:[
-        {player:"Yellow", color: "rgb(187, 198, 135)"},
-        {player:"Blue", color: "rgb(193, 219, 220)"}
+        {player:"one", color: "rgb(187, 198, 135)"},
+        {player:"two", color: "rgb(193, 219, 220)"}
     ]
 }
 const $slot = $(".slot")
 const $columns = $(`.board-column`)
-const yellowToken = game.players[0]
-const blueToken = game.players[1]
-const setPlayer = () => {
-    game.currentPlayer = game.players[0]
-}
+const playerOne = game.players[0]
+const playerTwo = game.players[1]
+setPlayer = () => game.currentPlayer = game.players[0]
+setPlayer()
 const switchPlayers = () =>{
-    if (game.currentPlayer === yellowToken) {
-        game.currentPlayer = blueToken
-    } else if (game.currentPlayer === blueToken) {
-        game.currentPlayer = yellowToken
+    if (game.currentPlayer === playerOne) {
+        game.currentPlayer = playerTwo
+    } else if (game.currentPlayer === playerTwo) {
+        game.currentPlayer = playerOne
     }
 }
 const checkVertical = (arrayOfColumn) => { 
@@ -68,4 +67,3 @@ $columns.click((e => {
         }
     }
 ))
-setPlayer()
