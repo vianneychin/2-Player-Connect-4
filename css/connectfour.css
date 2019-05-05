@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 .background-image {
-    background-image: url(/img/marble.jpg);
+    background-image: url("https://i.imgur.com/ZkLzSAC.jpg");
     background-size: cover;
     height: 100vh;
 }
@@ -87,7 +87,7 @@ input {
     position: absolute;
     top: 15%;
     left: 0%;
-    display: none;
+    /* display: none; */
 }
 .enter-player-one-name {
     width: 100%;
@@ -124,7 +124,7 @@ input {
     margin-top: -5.5px;
 }
 #connect-four-container {
-    /* display: none; */
+    display: none;
 }
 .connect-four-title {
     position: absolute;
@@ -167,7 +167,7 @@ input {
     display: flex;
     margin: auto;
     border-radius: 20px;
-    background-image: url("/img/wood.crop.jpg");
+    background-image: url("https://i.imgur.com/yGTg6R1.jpg");
     background-position: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
 }
@@ -216,4 +216,7 @@ h5 {
     justify-content: center;
     margin-top: 2em;
     margin-bottom: 1em;
+}
+.border-one {
+    /* border: solid 10px #bbc687; */
 }

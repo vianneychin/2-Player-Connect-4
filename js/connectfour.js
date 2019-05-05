@@ -13,15 +13,7 @@ $('.enter-player-two').click( () => {
     &&
     $('#connect-four-container').css('display', 'inline-flex')
 })
-
-$('.player-one-input').keyup( () => {
-    const name = $('.player-one-input').val()
-    $('.player-one-name').text( name )
-})
-$('.player-two-input').keyup( () => {
-    const name = $('.player-two-input').val()
-    $('.player-two-name').text( name )
-})
+const playerArray = []
 const game = {
     currentPlayer:{},
     players:[
@@ -29,12 +21,34 @@ const game = {
         {player:"two", color: "rgb(193, 219, 220)"}
     ]
 }
-const setPlayer = () => game.currentPlayer = game.players[0]
-      setPlayer()
-const     $slot = $(".slot")
-const  $columns = $(`.board-column`)
-const playerOne = game.players[0]
-const playerTwo = game.players[1]
+const displayPlayerOneName = $('.player-one-input').keyup( () => {
+    const name = $('.player-one-input').val()
+    $('.player-one-name').text(name)
+})
+const pressEnterToContinueForPlayerOne = $('.player-one-input').on('keypress', (event => {
+    let key = event.which
+    if(key == 13) {
+        $('.enter-player-one').click()
+    }
+}))
+const displayPlayerTwoName = $('.player-two-input').keyup( () => {
+    const name = $('.player-two-input').val()
+    $('.player-two-name').text(name)
+})
+const pressEnterToContinueForPlayerTwo = $('.player-two-input').on('keypress', (event => {
+    let key = event.which
+    if(key == 13) {
+        $('.enter-player-two').click()
+    }
+}))
+const checkWinner = () => {
+    $('.winner-declaration').css('display', 'inline')
+    $('#connect-four-game-board').css('pointer-events', 'none')
+}
+const         $slot = $(".slot")
+const      $columns = $(`.board-column`)
+const     playerOne = game.players[0]
+const     playerTwo = game.players[1]
 const switchPlayers = () =>{
     if (game.currentPlayer === playerOne) {
         game.currentPlayer = playerTwo,
@@ -46,13 +60,15 @@ const switchPlayers = () =>{
         $('.border-two').css("border", "solid 10px #c1dbdc")
     }
 }
+const     setPlayer = () => game.currentPlayer = game.players[0]
+                        $('.border-one').css("border", "solid 10px #bbc687")
 const checkVertical = (arrayOfColumn) => { 
     for (let i = 0; i < 3; i++) {
         if ((arrayOfColumn[i]).style.backgroundColor === game.currentPlayer.color &&
             (arrayOfColumn[i + 1]).style.backgroundColor === game.currentPlayer.color &&
             (arrayOfColumn[i + 2]).style.backgroundColor === game.currentPlayer.color &&
             (arrayOfColumn[i + 3]).style.backgroundColor === game.currentPlayer.color) {
-                alert(`${game.currentPlayer.color} wins`)
+                checkWinner()
         }
     }
 }
@@ -71,4 +87,4 @@ $columns.click((e => {
         }
     }
 ))
-
+setPlayer()
