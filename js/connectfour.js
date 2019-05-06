@@ -148,7 +148,6 @@ const  GAME_START = $columns.click((e => {
     for (let i  = $(e.currentTarget).children().length - 1; i >= 0; i--) {
             if ($(e.currentTarget).children()[i].style.backgroundColor === "") {
                 $(e.currentTarget).children()[i].style.backgroundColor = game.currentPlayer.color
-
                 checkVertical($column)
                 checkHorizontal($columns, i)
                 checkDiagonal()
