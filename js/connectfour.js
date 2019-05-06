@@ -3,42 +3,53 @@ const CLICK_start_to_continue =
     $('.how-to-play-container').css("display", 'none')
     &&
     $(".enter-player-one-name").css('display', 'inline-flex')
-)
+    )
 const CLICK_enter_to_continue_for_player_one =
- $('.enter-player-one').click( () => {
-    $('.enter-player-one-name').css("display", 'none')
-    &&
+$('.enter-player-one').click( () => {
+    $('.enter-player-one-name').css("display", 'none') &&
     $('.enter-player-two-name').css('display', 'inline-flex')
 })
 const CLICK_enter_to_continue_for_player_two =
- $('.enter-player-two').click( () => {
-    $('.enter-player-two-name').css("display", 'none')
-    &&
+    $('.enter-player-two').click( () => {
+    $('.enter-player-two-name').css("display", 'none') &&
     $('#connect-four-container').css('display', 'inline-flex')
 })
 const KEYPRESS_enter_to_continue_for_player_one =
  $('.player-one-input').on('keypress', (event => {
-    const key = event.which
-    if(key == 13) {
+    if(event.which == 13) {
         $('.enter-player-one').click()
     }
 }))
 const KEYPRESS_enter_to_continue_for_player_two =
  $('.player-two-input').on('keypress', (event => {
-    const key = event.which
-    if(key == 13) {
+    if(event.which == 13) {
         $('.enter-player-two').click()
     }
 }))
 const DISPLAY_player_one_name = 
- $('.player-one-input').keyup( () => {
-    const name = $('.player-one-input').val()
+    $('.player-one-input').keyup( () => {
+    let name = $('.player-one-input').val()
+    playerArray.push(name)
+    Name = playerArray.pop()
     $('.player-one-name').text(name)
+    $('.player-one-input').on('keypress', (event => {
+        if(event.which == 13) {
+            playerArray.push(Name)
+            const unique = [...new Set (playerArray)]
+        }
+    }))
 })
 const DISPLAY_player_two_name = 
 $('.player-two-input').keyup( () => {
-    const name = $('.player-two-input').val()
+    let name = $('.player-two-input').val()
+    playerArray.push(name)
+    Name = playerArray.pop()
     $('.player-two-name').text(name)
+    $('.player-two-input').on('keypress', (event => {
+        if(event.which == 13) {
+            playerArray.push(Name)
+        }
+    }))
 })
 const game = {
     currentPlayer:{},
@@ -49,38 +60,52 @@ const game = {
 }
 const   playerArray = []
 const      $columns = $(`.board-column`)
+
+
 const     setPlayer = () => game.currentPlayer = game.players[0]
-                        $('.border-one').css("border", "solid 10px #bbc687")
+          setPlayer()
+const     defaultPlayer = () => $('.border-one').css("border", "solid 10px #bbc687")
+          defaultPlayer()
+
 const   checkWinner = () => {
     $('.winner-declaration').css('display', 'inline')
     $('#connect-four-game-board').css('pointer-events', 'none')
+    if (checkWinner) {
+        $('.winner').text(`${playerArray[1]} WINS!!!`)
+        // console.log([...new Set(playerArray)])
+    }
 }
-const switchPlayers = () =>{
+const switchPlayers = () => {
     const playerOne = game.players[0]
     const playerTwo = game.players[1]
     if (game.currentPlayer === playerOne) {
-        game.currentPlayer = playerTwo,
-        $('.border-two').css("border", "")
-        $('.border-one').css("border", "solid 10px #bbc687")
+        game.currentPlayer = playerTwo
     } else if (game.currentPlayer === playerTwo) {
         game.currentPlayer = playerOne
-        $('.border-one').css("border", "")
-        $('.border-two').css("border", "solid 10px #c1dbdc")
     }
 }
-const checkVertical = (arrayOfColumn) => { 
+const checkVertical = (count) => { 
     for (let i = 0; i < 3; i++) {
-        if ((arrayOfColumn[i]).style.backgroundColor === game.currentPlayer.color &&
-            (arrayOfColumn[i + 1]).style.backgroundColor === game.currentPlayer.color &&
-            (arrayOfColumn[i + 2]).style.backgroundColor === game.currentPlayer.color &&
-            (arrayOfColumn[i + 3]).style.backgroundColor === game.currentPlayer.color) {
+        if ((count[i]).style.backgroundColor === game.currentPlayer.color &&
+            (count[i + 1]).style.backgroundColor === game.currentPlayer.color &&
+            (count[i + 2]).style.backgroundColor === game.currentPlayer.color &&
+            (count[i + 3]).style.backgroundColor === game.currentPlayer.color) {
                 checkWinner()
         }
     }
 }
+const switch_default_player = $columns.click( () => {
+    if (game.currentPlayer === game.players[1]) {
+        $('.border-two').css("border", "solid 10px #c1dbdc")
+        $('.border-one').css("border", "")
+    } else if (game.currentPlayer === game.players[0]) {
+        $('.border-two').css("border", "")
+        $('.border-one').css("border", "solid 10px #bbc687")
+    }
+})
 $columns.click((e => {
     let $column = $(e.currentTarget).children()
-    for (let i = $(e.currentTarget).children().length - 1; i >= 0; i--) {
+    for (let i  = $(e.currentTarget).children().length - 1; i >= 0; i--) {
             if ($(e.currentTarget).children()[i].style.backgroundColor === "") {
                 $(e.currentTarget).children()[i].style.backgroundColor = game.currentPlayer.color
 
@@ -93,4 +118,3 @@ $columns.click((e => {
         }
     }
 ))
-setPlayer()
