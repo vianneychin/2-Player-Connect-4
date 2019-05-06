@@ -101,6 +101,48 @@ const checkVertical = (count) => {
         }
     }
 }
+const checkHorizontal = (columns, index) => {
+    for (let i = 0; i < 5; i++) {
+        if ($(columns[i]).children()[index].style.backgroundColor === game.currentPlayer.color &&
+            $(columns[i+1]).children()[index].style.backgroundColor === game.currentPlayer.color &&
+            $(columns[i+2]).children()[index].style.backgroundColor === game.currentPlayer.color &&
+            $(columns[i+3]).children()[index].style.backgroundColor === game.currentPlayer.color) {
+                checkWinner()
+            }
+    }
+}
+const checkDiagonal = () => {
+    let colorCount = 0
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 7; col++) {
+            let colorCount = 0
+            if ($columns[col].children[row].style.backgroundColor === game.currentPlayer.color) {
+                if (col < 4) {
+                    for (let num = 0; num < 4; num++) {
+                        if ($columns[col + num].children[row + num].style.backgroundColor === game.currentPlayer.color) {
+                            colorCount++
+                        }
+                    }
+                }
+                if (col >= 3 && colorCount != 4) {
+                    colorCount = 0
+                    for (let num = 0; num < 4; num++) {
+                        if ($columns[col - num].children[row + num].style.backgroundColor === game.currentPlayer.color) {
+                            colorCount++
+                        }
+                    }
+                }
+                if (colorCount === 4) {
+                    colorCount = 1
+                    colorCount = 0
+                    checkWinner()
+                }
+            }
+        }
+        if (colorCount === 1) {
+        }
+    }
+}
 const  GAME_START = $columns.click((e => {
     const $column = $(e.currentTarget).children()
     for (let i  = $(e.currentTarget).children().length - 1; i >= 0; i--) {
@@ -108,8 +150,8 @@ const  GAME_START = $columns.click((e => {
                 $(e.currentTarget).children()[i].style.backgroundColor = game.currentPlayer.color
 
                 checkVertical($column)
-                // checkHorizontal($columns, i)
-                // checkDiagonal()
+                checkHorizontal($columns, i)
+                checkDiagonal()
                 switchPlayers()
                 return
             }
