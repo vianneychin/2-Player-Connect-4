@@ -6,6 +6,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none; 
+}
+*:focus {
+    outline: none;
 }
 .background-image {
     background-image: url("https://i.imgur.com/ZkLzSAC.jpg");
@@ -128,7 +132,7 @@ input {
 }
 .connect-four-title {
     position: absolute;
-    top: 20%;
+    top: 12%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
