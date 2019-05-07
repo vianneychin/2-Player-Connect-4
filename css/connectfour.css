@@ -66,6 +66,7 @@ button {
     font-weight: 400;
     text-align: center;
     color: #ffffff;
+    cursor: pointer;
 }
 input {
     width: 328px;
@@ -133,8 +134,13 @@ input {
 .connect-four-title {
     position: absolute;
     top: 12%;
-    left: 50%;
+    left: 53.5%;
     transform: translate(-50%, -50%);
+    width: 15em;
+}
+.corner-buttons {
+    float: right;
+    cursor: pointer;
 }
 .succulent-3 {
     display: flex;
@@ -174,6 +180,7 @@ input {
     background-image: url("https://i.imgur.com/yGTg6R1.jpg");
     background-position: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 .board-column {
     width: 74.3px;
@@ -221,6 +228,6 @@ h5 {
     margin-top: 2em;
     margin-bottom: 1em;
 }
-.border-one {
-    /* border: solid 10px #bbc687; */
+.winner {
+    text-transform: uppercase;
 }

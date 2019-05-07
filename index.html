@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Connect Four</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/connectfour.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/connectfour.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="../js/connectfour.js" defer></script>
+    <script src="js/connectfour.js" defer></script>
 </head>
 <body>
     <div class="background-image"></div>
@@ -55,7 +55,12 @@
         <button class="enter-player-two">enter</button>
     </div>
     <div id="connect-four-container">
-        <h1 class="connect-four-title">connect four</h1>
+        <div>
+        <h1 class="connect-four-title">connect four
+                <img class="corner-buttons" src="https://i.imgur.com/patdC8c.png" width="90" height="90" alt="x">
+                <img style="margin-top: 1.4%" class="corner-buttons" src="https://i.imgur.com/i97ikLe.png" height="60" width="60" alt="reload">
+        </h1>
+    </div>
         <div class="succulent-3 border-one">
             <img src="https://i.imgur.com/KXEslPr.png" height="95" width="95" alt="succulent-3">
             <h4 class='player-one-name'>
@@ -130,7 +135,7 @@
     <div class="winner-declaration">
         <h5 class="winner">VIANNEY WINS!</h5>
         <div class="buttons">
-            <button 
+            <button class="play-again-button" 
                 style="
                     font-size: 18px;
                     font-family: Helvetica;
@@ -138,7 +143,7 @@
                 ">
                 PLAY AGAIN
             </button>
-            <button 
+            <button class ="home-button"
                 style="
                     font-size: 18px;
                     font-family: Helvetica;

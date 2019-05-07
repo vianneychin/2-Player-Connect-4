@@ -166,3 +166,12 @@ const SWITCH_DEFAULT_OFF = $columns.click( () => {
         $('.border-one').css("border", "solid 10px #bbc687")
     }
 })
+const home_button_reload = $('.home-button').click( () => {
+    location.reload()
+})
+const play_again_button_reload = $('.play-again-button').click( () => {
+    location.reload()
+})
+$('.corner-buttons').click( () => {
+    location.reload()
+})
