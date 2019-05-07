@@ -1,2 +1,1 @@
-# Connect-Four-with-Zeplin
-# 2-Player-Connect-4
+<h1>Getting Started: Press <a href="https://vianneychin.github.io/Connect-Four-Zeplin/">Play</a></h1>

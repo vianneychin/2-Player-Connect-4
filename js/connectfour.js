@@ -69,7 +69,7 @@ const      $columns = $(`.board-column`)
 
 const     setPlayer = () => game.currentPlayer = game.players[0]
           setPlayer()
-const defaultPlayer = () => $('.border-one').css("border", "solid 10px #bbc687")
+const defaultPlayer = () => $('.border-one').css("border", "solid 10px #c1dbdc")
       defaultPlayer()
 
 const   checkWinner = () => {
@@ -159,11 +159,11 @@ const  GAME_START = $columns.click((e => {
 ))
 const SWITCH_DEFAULT_OFF = $columns.click( () => {
     if (game.currentPlayer === game.players[1]) {
-        $('.border-two').css("border", "solid 10px #c1dbdc")
+        $('.border-two').css("border", "solid 10px #bbc687")
         $('.border-one').css("border", "")
     } else if (game.currentPlayer === game.players[0]) {
         $('.border-two').css("border", "")
-        $('.border-one').css("border", "solid 10px #bbc687")
+        $('.border-one').css("border", "solid 10px #c1dbdc")
     }
 })
 const home_button_reload = $('.home-button').click( () => {
