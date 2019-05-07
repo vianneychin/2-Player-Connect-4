@@ -1,6 +1,6 @@
 <h1>Getting Started: Press
     <a href=
-    "https://vianneychin.github.io/Connect-Four-Zeplin/"
+    "https://vianneychin.github.io/Two-Player-Connect-Four-with-Zeplin.io/"
     >Play!</a>
 </h1>
 <h6>My Connect Four Board Game was re-designed by Stephanie Lee. Check out her portfolio at https://www.skimalee.com/ </h6>
